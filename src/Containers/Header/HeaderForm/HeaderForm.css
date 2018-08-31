@@ -1,0 +1,10 @@
+#HeaderForm input{
+    border-radius: 50px;
+    border: none;
+    width: 140px;
+    height: 22px;
+    background-color: white;
+}
+#HeaderForm input::placeholder{
+    padding-left: 7px;
+}

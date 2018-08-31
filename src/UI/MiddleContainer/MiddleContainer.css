@@ -1,0 +1,7 @@
+#middleContainer{
+    background-color: #2C2C2C;
+    padding-left: 200px;
+    padding-top: 60px;
+    width: calc(100% - 200px - 230px);
+    height: calc(100vh - 74px);
+}

@@ -1,0 +1,30 @@
+#Header{
+    position: fixed;
+    top: 0;
+    left: 200px;
+    background-color: #2C2C2C;
+    height: 60px;
+    width: calc(100% - 200px - 230px);
+}
+
+.Arrow{
+    background-color: transparent;
+    border: none;
+    vertical-align: middle;
+
+
+}
+.Arrow img {
+    width: 40px;
+    height: 40px;
+    margin: 3px 3px;
+}
+#Header p{
+    float: right;
+    color: grey;
+    display: inline-block;
+    margin-right: 10px;
+}
+#Header p:hover{
+    cursor: default;
+}

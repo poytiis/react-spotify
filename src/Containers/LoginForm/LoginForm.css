@@ -1,0 +1,57 @@
+.LoginFormDiv{
+    width: 30%;
+    height: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+.LoginForm{
+    margin-bottom: 140px;
+}
+.LoginFormField{
+    display: block;
+    margin-bottom: 12px;
+    width: 350px;
+    height: 35px;
+    border: none;
+}
+form{
+    display: inline-block;
+
+}
+input[type="text"], textarea {
+
+    background-color : #444942;
+
+}
+input[type="password"], textarea {
+
+    background-color : #444942;
+
+}
+input[type="number"], textarea {
+
+    background-color : #444942;
+
+}
+label{
+    display: block;
+}
+.LoginFormField::placeholder{
+    color: #9a9c95;
+    padding-left: 5px;
+}
+
+.LoginFormField:focus{
+    outline: none;
+    background-color: #a9a9a9;
+}
+.LoginFormSubmit{
+    margin-top: 40px;
+    border: 0px;
+    background-color: #18b764;
+    padding: 10px 40px;
+    border-radius: 80px;
+}
+.LoginFormSubmit:hover{
+    cursor: pointer;
+}

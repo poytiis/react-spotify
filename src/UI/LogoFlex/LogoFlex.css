@@ -1,0 +1,14 @@
+#logoFlex{
+    display: flex;
+    align-items: center;
+    margin: 20px auto;
+}
+#logoFlex p{
+    margin:0 5px;
+    color: white;
+    font-size: 23px;
+}
+#logoFlex img{
+    width: 40px;
+    height: 40px;
+}

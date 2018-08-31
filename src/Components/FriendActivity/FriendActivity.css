@@ -1,0 +1,25 @@
+#FriendActivity{
+    background-color: #1C1C1C;
+    width: 230px;
+    height: calc(100vh - 74px);
+    right: 0;
+    position: fixed;
+    text-align: center;
+}
+
+#FriendActivity h1{
+
+    color:grey;
+    padding-left: 14px;
+    font-size: 16px;
+    padding-top: 35px;
+    float: left;
+}
+
+#FriendActivity hr{
+    color: grey;
+    display: block;
+    margin: 10px auto;
+
+    width: 90%;
+}

@@ -1,0 +1,20 @@
+.textDecoration{
+    display: flex;
+    align-items: center;
+    width: 350px;
+    height: 30px;
+    margin:10px 0;
+
+}
+.textDecoration p{
+    padding: 0 8px;
+    color: grey;
+}
+.textDecoration hr{
+    color: grey;
+    width: 20px;
+    height: 1px;
+    border: 0;
+    background-color: grey;
+    flex-grow: 10;
+}

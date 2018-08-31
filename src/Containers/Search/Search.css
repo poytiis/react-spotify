@@ -1,0 +1,24 @@
+#Search{
+    width: 40%;
+    height: 100%;
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 30px;
+}
+
+#Search h1{
+    color:#DADAE6;
+    font-size: 24px;
+}
+
+#Search p {
+    color: grey;
+    line-height: 1.6;
+}
+#Search img{
+    display: inline-block;
+    width: 55px;
+    height: 55px;
+    margin: 30px 0;
+
+}
