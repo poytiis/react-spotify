@@ -1,0 +1,55 @@
+#ListItem{
+    list-style: none;
+    height: 34px;
+    padding: 5px 8px;
+    display: flex;
+    border-top: 1px solid white;
+    align-items: center;
+}
+#ListItem:hover{
+    background-color: darkgrey;
+}
+#ListItem:hover .ListItemPlay{
+    visibility: visible;
+}
+
+.ListItemPlay{
+    height: 34px;
+    width: 34px;
+    margin-right: 8px;
+    visibility: hidden;
+    cursor: pointer;
+}
+.ListItemHeart{
+    height: 25px;
+    width: 25px;
+    margin-right: 10px ;
+}
+.ListItemTitle{
+    width: 30%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+.ListItemAlbum{
+    width: 15%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+.ListItemDate{
+    width: 15%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+.ListItemArtist{
+    width: 15%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}

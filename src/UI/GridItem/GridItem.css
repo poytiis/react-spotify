@@ -1,9 +1,7 @@
 #gridItem{
     width: 25%;
     height: 280px;
-    text-align: center;
-
-
+    box-sizing: border-box;
 
 }
 #gridItem img:before{
@@ -13,11 +11,10 @@
 }
 #gridItem img  {
     width: 80%;
-    border-radius: 5000px;
 
 }
 #gridItem h4 {
-    padding: 20px 0 5px 0;
+    padding: 20px 0 5px 10px;
     margin: 0;
     color: white;
 
@@ -25,5 +22,5 @@
 #gridItem p  {
     color: grey;
     margin: 0;
-    padding: 0;
+    padding: 0 0 0 10px;
 }

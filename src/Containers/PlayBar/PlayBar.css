@@ -1,0 +1,117 @@
+#PlayBar{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    height: 70px;
+    width: 100%;
+    background-color: #282828;
+}
+#PlayBarLeft,
+#PlayBarRight{
+    width: 30%;
+    min-width: 180px;
+}
+#PlayBarCenter{
+    width: 40%;
+    max-width: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#PlayBarLeft{
+    display: flex;
+    align-items: center;
+}
+#PlayBarLeft img{
+    height: 45px;
+    width: 45px;
+    margin-left: 12px;
+}
+#PlayBarLeftText{
+    margin-left: 12px;
+    height: 45px;
+    width: 100%;
+}
+#PlayBarLeftText h4{
+    margin: 3px 0 7px 0;
+    padding: 0;
+    font-size: 15px;
+    color: lightgrey;
+}
+#PlayBarLeftText p {
+    margin:0;
+    padding: 0;
+    font-size: 10px;
+    color: lightgrey;
+}
+#PlayBarCenterTop{
+    width: 100%;
+    height: 70%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    box-sizing: border-box;
+    padding-top: 8px;
+}
+#PlayBarCenterBottom{
+    width: 100%;
+    height: 30%;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    padding-bottom: 8px;
+}
+#PlayBarCenterTop div{
+    height: 30px;
+    width: 250px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.controlButton {
+    background-color: transparent;
+    border: none;
+    vertical-align: middle;
+}
+
+.controlButton img {
+    width: 20px;
+    height: 20px;
+}
+.controlButton.play img,
+.controlButton.pause img {
+    width: 32px;
+    height: 32px;
+}
+
+.controlButton:hover {
+    cursor: pointer;
+}
+#songProgress{
+    flex-grow: 10;
+    background-color: grey;
+    height: 4px;
+    margin: 0 8px;
+    border-radius: 4px;
+}
+#PlayBarCenterBottom span {
+    color: lightgray;
+    font-size: 12px;
+}
+#PlayBarRight{
+    display: flex;
+    flex-flow: row-reverse;
+    align-items: center;
+}
+#volumeBar{
+    height: 4px;
+    width: 70px;
+    background-color: grey;
+    border-radius: 4px;
+    margin: 0 16px 0 2px;
+}
+#PlayBarRight button{
+    margin-right: 6px;
+}

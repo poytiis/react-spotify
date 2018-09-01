@@ -1,0 +1,11 @@
+#AlbumHeader{
+    color: white;
+    padding: 10px 10px;
+    margin: 0;
+}
+#AlbumDiv{
+    display: flex;
+    overflow: auto;
+    flex-wrap: wrap;
+
+}

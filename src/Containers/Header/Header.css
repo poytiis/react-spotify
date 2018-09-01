@@ -5,6 +5,8 @@
     background-color: #2C2C2C;
     height: 60px;
     width: calc(100% - 200px - 230px);
+    display: flex;
+    align-items: center;
 }
 
 .Arrow{
@@ -20,11 +22,22 @@
     margin: 3px 3px;
 }
 #Header p{
-    float: right;
+
     color: grey;
     display: inline-block;
     margin-right: 10px;
 }
 #Header p:hover{
     cursor: default;
+}
+.profilePic{
+    height: 22px;
+    width: 22px;
+    border-radius: 100px;
+    margin: 0 5px 0 12px;
+}
+.dropDown{
+    height: 15px;
+    width: 15px;
+    margin: 0 5px 0 5px;
 }

@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
-
-import Footer from '../../Containers/Footer/Footer'
 import SideDrawer from '../../Components/SideDrawer/SideDrawer'
 import Header from '../../Containers/Header/Header';
 import FriendActivity from '../../Components/FriendActivity/FriendActivity';
 import MiddleContainer from '../MiddleContainer/MiddleContainer';
 import Search from '../../Containers/Search/Search';
 import Artists from '../../Containers/Artists/Artists';
+import Albums from '../../Containers/Albums/Albums';
+import PlayBar from '../../Containers/PlayBar/PlayBar';
+import FavoriteSongs from '../../Containers/FavoriteSongs/FavoriteSongs';
 
 class Layout extends Component {
 
@@ -14,7 +15,8 @@ class Layout extends Component {
         let content= <Search/>;
         if(this.props.content==='Artists') content= <Artists/>;
         else if(this.props.content==='Search') content=<Search/>;
-
+        else if(this.props.content==='Albums') content=<Albums/>;
+        else if(this.props.content==='Songs') content=<FavoriteSongs/>;
 
        return(
          <React.Fragment>
@@ -24,7 +26,7 @@ class Layout extends Component {
              <MiddleContainer>
                  {content}
              </MiddleContainer>
-           <Footer/>
+           <PlayBar/>
 
        </React.Fragment>
 

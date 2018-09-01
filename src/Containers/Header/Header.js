@@ -4,6 +4,8 @@ import back from '../../Assets/Pictures/icons/back-arrow.png';
 import forward from '../../Assets/Pictures/icons/forward-arrow.png'
 import HeaderForm from './HeaderForm/HeaderForm';
 import Button from '../../Components/Button/Button';
+import picture from '../../Assets/Pictures/square3.jpg';
+import dropDown from '../../Assets/Pictures/icons/dropDown.png';
 
 class Header extends Component{
     render(){
@@ -11,10 +13,9 @@ class Header extends Component{
             padding:'2px 5px',
             color:'grey',
             backgroundColor:'#1C1C1C',
-            float:'right',
-            margin: '14px 6px 0 0',
             minWidth:'30px',
-            fontSize:'12px'
+            fontSize:'12px',
+            marginLeft: 'auto'
         };
 
         return(
@@ -26,8 +27,10 @@ class Header extends Component{
                     <img src={forward} alt="forward-arrow"/>
                 </button>
                 <HeaderForm/>
-                <p>Teemu Pöytäniemi</p>
                 <Button stylee={buttonStyle}>upgrade</Button>
+                <img src={picture} className='profilePic' alt='profile'/>
+                <p>Teemu Pöytäniemi</p>
+                <img src={dropDown} alt='drop down' className='dropDown'/>
 
 
             </div>

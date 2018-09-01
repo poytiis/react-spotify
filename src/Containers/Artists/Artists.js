@@ -1,22 +1,43 @@
 import React ,{Component, Fragment} from 'react';
-
-import ArtistListItem from './ArtistListItem/ArtistListItem';
+import axios from 'axios';
 import square from '../../Assets/Pictures/square2.png';
 import './Artists.css';
+import  GridItem from '../../UI/GridItem/GridItem';
+import Spinner from '../../UI/Spinner/Spinner';
 
 class Artists extends  Component{
+    state={
+        loading:false,
+        loaded:false
+    };
+
+
+    componentDidMount(){
+        this.setState({loading:true});
+        axios.get('https://react-spotify-b66da.firebaseio.com/artists.json')
+            .then(res=>{
+
+                this.setState({artist:Object.values(res.data),loading:false, loaded:true});
+
+            })
+    }
+    shouldComponentUpdate(nextProps, nextState){
+
+        return nextState.artist !== this.state.artist;
+    }
+
     render(){
+        let content=<Spinner/>;
+        if( this.state.loaded && !this.state.loading){
+
+            content=this.state.artist.map(artist=><GridItem type='artist' key={artist.name} source={square} artistName={artist.name} songs={artist.songs}/>);
+        }
         return(
             <Fragment>
                 <h1 id='ArtistHeader'>Artists</h1>
                 <hr/>
                 <div id='ArtistDiv'>
-                    <ArtistListItem source={square} songs='5' artistName='Teemu'/>
-
-                    <ArtistListItem source={square} songs='5' artistName='Teemu'/>
-                    <ArtistListItem source={square} songs='5' artistName='Teemu'/>
-                    <ArtistListItem source={square} songs='5' artistName='Teemu'/>
-                    <ArtistListItem source={square} songs='5' artistName='Teemu'/>
+                    {content}
 
                 </div>
 
