@@ -13,7 +13,7 @@ const sideDrawer=()=>{
                 <NavLink to='/test' className='NavLink'> Radio</NavLink>
                 <p >YOUR LIBRARY</p>
                 <NavLink to='/test' className='NavLink'> Recently played</NavLink>
-                <NavLink to='/test' className='NavLink'>Favorite songs</NavLink>
+                <NavLink to='/favoriteSongs' className='NavLink'>Favorite songs</NavLink>
                 <NavLink to='/albums' className='NavLink'>Albums</NavLink>
                 <NavLink to='/artists' className='NavLink'>Artists</NavLink>
                 <NavLink to='/test' className='NavLink'>Stations</NavLink>

@@ -5,9 +5,12 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
 import {BrowserRouter} from 'react-router-dom';
-import{createStore, combineReducers} from 'redux';
+import{createStore, combineReducers, applyMiddleware, compose} from 'redux';
 import {Provider} from 'react-redux';
 import authReducer from './Store/Reducers/Auth';
+import thunk from 'redux-thunk';
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootReducer=combineReducers(
     {
@@ -15,7 +18,9 @@ const rootReducer=combineReducers(
     }
 );
 
-const store= createStore(rootReducer);
+const store = createStore(rootReducer, composeEnhancers(
+    applyMiddleware(thunk)
+));
 
 const app=(
     <Provider store={store}>
