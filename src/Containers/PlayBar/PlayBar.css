@@ -96,6 +96,10 @@
     margin: 0 8px;
     border-radius: 4px;
 }
+#songPlayed{
+    height: 100%;
+    background: black;
+}
 #PlayBarCenterBottom span {
     color: lightgray;
     font-size: 12px;
@@ -114,4 +118,8 @@
 }
 #PlayBarRight button{
     margin-right: 6px;
+}
+#volumeControl{
+    height: 100%;
+    background-color: black;
 }

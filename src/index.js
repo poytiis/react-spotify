@@ -8,13 +8,15 @@ import {BrowserRouter} from 'react-router-dom';
 import{createStore, combineReducers, applyMiddleware, compose} from 'redux';
 import {Provider} from 'react-redux';
 import authReducer from './Store/Reducers/Auth';
+import playerReducer from './Store/Reducers/Player';
 import thunk from 'redux-thunk';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootReducer=combineReducers(
     {
-        auth:authReducer
+        auth:authReducer,
+        player:playerReducer
     }
 );
 

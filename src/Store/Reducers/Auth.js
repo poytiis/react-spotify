@@ -2,7 +2,7 @@ import * as actions from '../Actions/actionTypes';
 
 const initialState={
     token: null,
-    userId:null
+    userId:'vz75b4eBd0RVz1DpTFFtZBtjE7v1'
 
 };
 

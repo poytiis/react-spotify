@@ -6,8 +6,21 @@ import HeaderForm from './HeaderForm/HeaderForm';
 import Button from '../../Components/Button/Button';
 import picture from '../../Assets/Pictures/square3.jpg';
 import dropDown from '../../Assets/Pictures/icons/dropDown.png';
+import axios from 'axios';
+import {connect} from 'react-redux';
 
 class Header extends Component{
+
+    state={
+        name:''
+    };
+
+    componentDidMount(){
+        let url='https://react-spotify-b66da.firebaseio.com/users/';
+        url=url.concat(this.props.userId,'/name.json');
+        axios.get(url).then(res=>{this.setState({name:res.data})});
+
+    }
     render(){
         const buttonStyle={
             padding:'2px 5px',
@@ -29,7 +42,7 @@ class Header extends Component{
                 <HeaderForm/>
                 <Button stylee={buttonStyle}>upgrade</Button>
                 <img src={picture} className='profilePic' alt='profile'/>
-                <p>Teemu Pöytäniemi</p>
+                <p>{this.state.name}</p>
                 <img src={dropDown} alt='drop down' className='dropDown'/>
 
 
@@ -38,5 +51,11 @@ class Header extends Component{
     }
 
 }
+const mapSateToProps= state =>{
+    return{
+        userId :state.auth.userId
+    };
 
-export  default Header;
+};
+
+export  default connect(mapSateToProps, null)(Header);

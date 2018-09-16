@@ -21,6 +21,7 @@ class LoginForm extends Component{
      handleSubmit = (event)=>{
         console.log('klsdskf');
         event.preventDefault();
+        //this.props.test();
         this.props.onAuth(this.state.email,this.state.password);
 
     };
@@ -48,6 +49,7 @@ class LoginForm extends Component{
 const mapDispatchToProps = dispatch => {
     return {
         onAuth: ( email, password ) => dispatch( actions.logIn( email, password ) ),
+        test:()=>dispatch(actions.createUser())
 
     };
 };

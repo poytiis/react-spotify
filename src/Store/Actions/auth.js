@@ -26,14 +26,16 @@ export const signUp=(email, password, name)=>{
     return dispatch =>{
         dispatch(authStart());
         const authData={
-            email:'testi3@gmail.com',
-            password:'tauaksakh122',
+            email:email,
+            password:password,
             returnSecureToken:true
         };
+        //tauaksakh122
         axios.post("https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=AIzaSyA8LWRgDoWy1CWxI7jT2-DD0WGkOyWwmXE",authData)
             .then(res=>{
                 console.log(res);
-                dispatch(authSuccess(res.data));
+
+                dispatch(createUser(res.data, name))
             });
 
     };
@@ -51,18 +53,26 @@ export const logIn=(email, password)=>{
             .then(res=>{
                 console.log(res);
                 dispatch(authSuccess(res.data));
+
             });
 
 
     }
 };
 
-export const createUser= (userId)=>{
-    let url='https://react-spotify-b66da.firebaseio.com/';
-    url=url.concat('testi2@gmail.com/');
+export const createUser= (data, name)=>{
+    return dispatch=>{
 
-    const data={
-        name:'Teemu'
+        let url='https://react-spotify-b66da.firebaseio.com/users/';
+        url=url.concat(data.localId, '.json');
+
+        const d={
+
+            name:name
+        };
+        axios.put(url, d).then(res=>{dispatch(authSuccess(data))});
+
     };
-    axios.put(url, data).then(res=>{console.log(res);});
+
+
 };
