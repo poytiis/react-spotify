@@ -24,6 +24,7 @@ class FavoriteSongs extends Component{
     };
 
     componentDidMount(){
+        if(this.state.loaded) return;
         let url='https://react-spotify-b66da.firebaseio.com/users/';
         url=url.concat(this.props.userId,'/songs.json');
         axios.get(url).then(res=>{
@@ -34,9 +35,12 @@ class FavoriteSongs extends Component{
                 songUrl= songUrl.concat(obj,'.json');
                 axios.get(songUrl).then(res2=>{
                     index++;
-                    const newSongs= this.state.songs.concat(res2.data);
-                    const newSongIds=this.state.songIds.concat(res2.data.id);
-                    this.setState({songs:newSongs,songIds:newSongIds});
+                    if(res2.data!==null) {
+                        const newSongs= this.state.songs.concat(res2.data);
+                        const newSongIds=this.state.songIds.concat(res2.data.id);
+                        this.setState({songs:newSongs,songIds:newSongIds});
+                    }
+
                     if(index===this.state.totalSongs){
                         this.setState({loaded:true});
                     }
@@ -44,15 +48,14 @@ class FavoriteSongs extends Component{
             })
         });
     }
-    shouldComponentUpdate(){
-        return this.state.loaded;
-    }
+   
 
     render(){
         console.log(this.state.songs);
         let content=<Spinner/>;
         if(this.state.loaded){
-            content=this.state.songs.map((res,index)=> <ListItem title={res.title} key={res.id} artist={res.artist}
+            content=this.state.songs.map((res,index)=> <ListItem tittle={res.tittle} key={res.id}
+                                                                 artist={res.artist} id={res.id}
                                                                  playControl={this.playSong.bind(this,res.id,index)}/>)
         }
         return(

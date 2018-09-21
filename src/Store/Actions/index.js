@@ -9,5 +9,6 @@ export {
     removeFav,
     playNext,
     playPre,
-    playNew
+    playNew,
+    songEnded
 }from './player'

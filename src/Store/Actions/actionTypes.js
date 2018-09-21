@@ -1,10 +1,13 @@
 export const AUTH_START='AUTH_START';
 export const AUTH_SUCCESS='AUTH_SUCCESS';
 export const AUTH_FAIL='AUTH_FAIL';
-export const CHANGE_SONG='CHANGE_SONG';
+export const SWITCHSHUFFLE='SWITCHSHUFFLE';
 export const REMOVE_FAV='REMOVE_FAV';
 export const PLAY_NEXT='PLAY_NEXT';
 export const ADD_QUEUE='ADD_QUEUE';
 export const PLAY_PRE='PLAY_PRE';
 export const SET_PLAYLIST='SET_PLAYLIST';
 export const PLAY_NEW='PLAY_NEW';
+export const SONG_ENDED='SONG_ENDED';
+export const PLAY_FROM_QUEUE='PLAY_FROM_QUEUE';
+export const PLAY_FROM_PLAYLIST='PLAY_FROM_PLAYLIST';

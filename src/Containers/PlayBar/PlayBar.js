@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
 import './PlayBar.css';
-import pic from '../../Assets/Pictures/square3.jpg';
 import next  from '../../Assets/Pictures/icons/next.png';
 import repeat  from '../../Assets/Pictures/icons/repeat.png';
+import repeatOn from '../../Assets/Pictures/icons/repeat-active.png';
 import play  from '../../Assets/Pictures/icons/play.png';
 import shuffle  from '../../Assets/Pictures/icons/shuffle.png';
+import shuffleOn  from '../../Assets/Pictures/icons/shuffle-active.png';
 import previous  from '../../Assets/Pictures/icons/previous.png';
 import volume  from '../../Assets/Pictures/icons/volume.png';
 import pause from '../../Assets/Pictures/icons/pause.png';
@@ -30,7 +31,8 @@ class PlayBar extends Component{
             timePlayed:0.00,
             prosentPlayed:0,
             vol:40,
-            mute:false
+            mute:false,
+            repeating:false
         };
     }
 
@@ -91,6 +93,38 @@ class PlayBar extends Component{
         this.audioRef.current.currentTime=percentage*this.state.duration;
     };
 
+    playNext= (caller=null)=>{
+
+        let random=null;
+        let nextSong=null;
+        let way=null;
+        if(caller!==null && this.state.repeating){
+            nextSong=this.props.playLit[this.props.playListIndex];
+            way='repeating';
+        }
+        else if(this.props.queue.length!==0){
+            nextSong=this.props.queue[0];
+            way='queue';
+        }else if(this.props.playLit.length!==0){
+
+            if(this.props.shuffle){
+                random=Math.floor(Math.random()*this.props.playLit.length);
+                nextSong=this.props.playLit[random];
+            }else{
+                nextSong=this.props.playLit[this.props.playListIndex+1];
+            }
+
+            way='playlist';
+        }
+        if(way !==null) this.props.songEnded(nextSong,way,random);
+
+    };
+    switchRepeat=()=>{
+        this.setState(previous=>({repeating:!previous.repeating}));
+    };
+    
+
+
     render(){
 
         return(
@@ -107,12 +141,12 @@ class PlayBar extends Component{
                 <div id='PlayBarCenter'>
                     <div id='PlayBarCenterTop'>
                         <div>
-                            <button className="controlButton shuffle" title="Shuffle button">
-                                <img src={shuffle} alt="Shuffle"/>
+                            <button className="controlButton shuffle" title="Shuffle button" onClick={this.props.switchShuffle}>
+                                <img src={this.props.shuffle?shuffleOn:shuffle} alt="Shuffle"/>
                             </button>
 
                             <button className="controlButton previous" title="Previous button"
-                                    onClick={this.props.playPre.bind(this,this.props.playedSongs[this.props.playedSongs.length-1])}>
+                                    onClick={this.props.playPre.bind(this,this.props.playedSongs[this.props.playedSongs.length-this.props.backIndex-1])}>
                                 <img src={previous} alt="Previous"/>
                             </button>
 
@@ -123,12 +157,12 @@ class PlayBar extends Component{
 
 
                             <button className="controlButton next" title="Next button"
-                                    onClick={this.props.playNext.bind(this, this.props.queue[0])}>
+                                    onClick={this.playNext}>
                                 <img src={next} alt="Next"/>
                             </button>
 
-                            <button className="controlButton repeat" title="Repeat button">
-                                <img src={repeat} alt="Repeat"/>
+                            <button className="controlButton repeat" title="Repeat button" onClick={this.switchRepeat}>
+                                <img src={this.state.repeating?repeatOn:repeat} alt="Repeat"/>
                             </button>
                         </div>
 
@@ -161,7 +195,8 @@ class PlayBar extends Component{
 
                 </div>
 
-                <audio ref={this.audioRef} src={this.props.songSrc} onCanPlay={this.setDuration} onTimeUpdate={this.timeUpdate}>
+                <audio ref={this.audioRef} src={this.props.songSrc} onCanPlay={this.setDuration}
+                       onTimeUpdate={this.timeUpdate} onEnded={this.playNext.bind(this,'ended')}>
 
                 </audio>
 
@@ -176,13 +211,19 @@ const mapStateToProps=state=>{
         songSrc:state.player.songPath,
         queue:state.player.queue,
         pic:state.player.pic,
-        playedSongs:state.player.playedSongs
+        playedSongs:state.player.playedSongs,
+        playLit:state.player.playList,
+        playListIndex:state.player.playIndex,
+        shuffle:state.player.shuffle,
+        backIndex:state.player.backIndex
     }
 };
 const mapDispatchToProps= dispatch=>{
     return{
         playNext: (song)=>dispatch(actions.playNext(song)),
         playPre:(song)=>dispatch(actions.playPre(song)),
+        songEnded:(id,way)=>dispatch(actions.songEnded(id,way)),
+        switchShuffle:()=>dispatch({type:actionTypes.SWITCHSHUFFLE})
 
     }
 };
