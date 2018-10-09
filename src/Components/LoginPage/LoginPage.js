@@ -7,11 +7,12 @@ import Button from '../Button/Button';
 import LogoFlex from '../../UI/LogoFlex/LogoFlex';
 import TextDecoration from '../../UI/TextDecoration/TextDecoration';
 
+
 const loginPage=(props)=>{
     const buttonStyle={
         border:'none',
         marginBottom:'15px'
-    }
+    };
     return(
         <BackGroundIm>
             <div className='LoginFormDiv'>
@@ -19,8 +20,8 @@ const loginPage=(props)=>{
 
                 <Button color='white'  bg='blue' stylee={buttonStyle}> Log in with Facebook</Button>
                 <TextDecoration>OR</TextDecoration>
-                <LoginForm/>
-                <Link to='/'> Home</Link>
+                <LoginForm history={props.history}/>
+                <Link to='/' className='authLink'> Home</Link>
             </div>
 
 

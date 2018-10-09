@@ -22,5 +22,14 @@
 #gridItem p  {
     color: grey;
     margin: 0;
-    padding: 0 0 0 10px;
+    padding: 6px 0 0 0;
+}
+#gridItem .gridLink{
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+    color: whitesmoke;
+}
+#gridItem .gridLink:hover{
+    text-decoration: underline;
 }

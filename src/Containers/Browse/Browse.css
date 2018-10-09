@@ -1,0 +1,21 @@
+#BrowseHeader{
+    display: flex;
+    justify-content: space-around;
+}
+.BrowseHeaderSpanContainer{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    margin-right: 20px;
+}
+.BrowseHeaderSpanContainer hr{
+    height: 2px;
+    width: 40px;
+    border: 0;
+    background-color: green;
+
+}
+.BrowseHeaderSpanContainer span{
+    color: darkgrey;
+    font-size: 15px;
+}

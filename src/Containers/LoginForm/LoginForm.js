@@ -2,6 +2,7 @@ import React ,{Component} from 'react';
 import './LoginForm.css';
 import * as actions from '../../Store/Actions/index';
 import {connect} from 'react-redux';
+import {Redirect} from 'react-router-dom';
 
 class LoginForm extends Component{
 
@@ -25,9 +26,17 @@ class LoginForm extends Component{
         this.props.onAuth(this.state.email,this.state.password);
 
     };
+    componentWillUnmount(){
+        this.props.clearError();
+    }
+
     render(){
+        let re= this.props.userId !==null?<Redirect to ='/'/>:null;
+
         return(
+
             <div className='LoginFormDiv'>
+                {re}
                 <form onSubmit={this.handleSubmit } className='LoginForm'>
 
                          <input className='LoginFormField' type='text' value={this.state.email}
@@ -37,8 +46,10 @@ class LoginForm extends Component{
                          <input className='LoginFormField' type='password' value={this.state.password}
                                 onChange={this.handlePassChange.bind(this)} placeholder='Password'/>
 
-                    <input className='LoginFormSubmit' type='submit' value='LOG IN'/>
 
+
+                    <input className='LoginFormSubmit' type='submit' value='LOG IN'/>
+                    <h1>{this.props.error}</h1>
 
                 </form>
 
@@ -46,11 +57,18 @@ class LoginForm extends Component{
         );
     }
 }
+const mapStateToProps=state=>{
+    return{
+        userId :state.auth.userId,
+        error:state.auth.error
+    }
+};
 const mapDispatchToProps = dispatch => {
     return {
         onAuth: ( email, password ) => dispatch( actions.logIn( email, password ) ),
+        clearError:()=>dispatch(actions.clearError()),
         test:()=>dispatch(actions.createUser())
 
     };
 };
-export  default connect(null ,mapDispatchToProps)(LoginForm);
+export  default connect(mapStateToProps ,mapDispatchToProps)(LoginForm);

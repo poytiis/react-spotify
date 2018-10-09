@@ -11,16 +11,16 @@ const signUpPage=(props)=>{
     const buttonStyle={
         border:'none',
         marginBottom:'15px'
-    }
+    };
     return(
         <BackGroundIm>
             <div className='LoginFormDiv'>
                 <LogoFlex/>
 
-                <Button color='white'  bg='blue' stylee={buttonStyle}> Sign in  with Facebook</Button>
+                <Button color='white'  bg='blue' stylee={buttonStyle}> Sign up  with Facebook</Button>
                 <TextDecoration>OR</TextDecoration>
-                <SignUpForm/>
-                <Link to='/'> Home</Link>
+                <SignUpForm history={props.history}/>
+                <Link to='/' className='authLink'> Home</Link>
             </div>
 
 

@@ -1,6 +1,7 @@
 import React ,{Component} from 'react';
 import * as actions from '../../Store/Actions/index';
 import {connect} from 'react-redux';
+import {Redirect} from 'react-router-dom'
 
 class SignUpForm extends Component{
 
@@ -28,14 +29,26 @@ class SignUpForm extends Component{
     handleSubmit = (event)=>{
         console.log('klsdskf');
         event.preventDefault();
-        if(this.state.firstPassword !== this.state.secondPassword) return;
+        if(this.state.firstPassword !== this.state.secondPassword) {
+            this.props.passwordsDontMatch();
+            return;
+        }
         this.props.onAuth(this.state.email,this.state.firstPassword, this.state.name);
 
     };
+    componentWillUnmount(){
+        this.props.clearError();
+    }
 
     render(){
+
+       let re= this.props.userId !==null?<Redirect to ='/'/>:null;
+
         return(
+
             <div className='LoginFormDiv'>
+                {re}
+
                 <form onSubmit={this.handleSubmit } className='LoginForm'>
 
                     <input className='LoginFormField' type='text' value={this.state.email}
@@ -52,7 +65,7 @@ class SignUpForm extends Component{
                            onChange={this.handleSecondPassChange} placeholder='Repeat Password'/>
 
                     <input className='LoginFormSubmit' type='submit' value='SIGN UP'/>
-
+                    <h1>{this.props.error}</h1>
 
                 </form>
 
@@ -64,8 +77,15 @@ class SignUpForm extends Component{
 const mapDispatchToProps = dispatch => {
     return {
         onAuth: ( email, password, name ) => dispatch( actions.signUp( email, password, name ) ),
-
+        passwordsDontMatch:()=>dispatch(actions.passwordsDontMatch()),
+        clearError:()=>dispatch(actions.clearError())
     };
 };
+const mapStateToProps=state=>{
+    return{
+        userId :state.auth.userId,
+        error:state.auth.error
+    }
+};
 
-export default connect(null, mapDispatchToProps)(SignUpForm);
+export default connect(mapStateToProps, mapDispatchToProps)(SignUpForm);

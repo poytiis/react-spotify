@@ -8,12 +8,15 @@ import picture from '../../Assets/Pictures/square3.jpg';
 import dropDown from '../../Assets/Pictures/icons/dropDown.png';
 import axios from 'axios';
 import {connect} from 'react-redux';
+import * as actions from '../../Store/Actions/index';
 
 class Header extends Component{
 
     state={
-        name:''
+        name:'',
+        popupVisible: false
     };
+
 
     componentDidMount(){
         let url='https://react-spotify-b66da.firebaseio.com/users/';
@@ -21,6 +24,31 @@ class Header extends Component{
         axios.get(url).then(res=>{this.setState({name:res.data})});
 
     }
+    handleClick=()=> {
+        if (!this.state.popupVisible) {
+
+            document.addEventListener('click', this.handleOutsideClick, false);
+        } else {
+            document.removeEventListener('click', this.handleOutsideClick, false);
+        }
+
+        this.setState(prevState => ({
+            popupVisible: !prevState.popupVisible,
+        }));
+    };
+    handleOutsideClick=(e)=> {
+        // ignore clicks on the component itself
+        if (this.node.contains(e.target)) {
+            return;
+        }
+
+        this.handleClick();
+    };
+    handleLogOut=()=>{
+        document.removeEventListener('click', this.handleOutsideClick, false);
+        this.props.logout()
+    };
+
     render(){
         const buttonStyle={
             padding:'2px 5px',
@@ -43,7 +71,13 @@ class Header extends Component{
                 <Button stylee={buttonStyle}>upgrade</Button>
                 <img src={picture} className='profilePic' alt='profile'/>
                 <p>{this.state.name}</p>
-                <img src={dropDown} alt='drop down' className='dropDown'/>
+                <div className='dropDown'>
+                    <img src={dropDown} alt='drop down' className='dropDownImg' onClick={this.handleClick}/>
+                    <div className='dropDownContent' ref={node=>this.node=node} style={{display:this.state.popupVisible?'block':'none'}}>
+                        <p onClick={this.handleLogOut}>Log out</p>
+                    </div>
+                </div>
+
 
 
             </div>
@@ -57,5 +91,10 @@ const mapSateToProps= state =>{
     };
 
 };
+const mapDispatcToProps= dispatch=>{
+    return{
+        logout:()=>dispatch(actions.logOut())
+    }
+};
 
-export  default connect(mapSateToProps, null)(Header);
+export  default connect(mapSateToProps, mapDispatcToProps)(Header);

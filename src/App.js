@@ -6,32 +6,53 @@ import LoginPage from './Components/LoginPage/LoginPage';
 import Test from './Components/Test/Test';
 import Layout from './UI/Layout/Layout';
 import SignUpPage from './Components/SignUpPage/SignUpPage';
+import NewPlayList from './Containers/NewPlayList/NewPlayList'
 
-
-
-import {Route, Switch} from 'react-router-dom';
+import { connect } from 'react-redux';
+import {Route, Switch,withRouter} from 'react-router-dom';
 
 class App extends Component {
   render() {
+      let routes=(
+          <Switch>
+              <Route path='/' exact component={FistPage}/>
+              <Route path='/login' component={LoginPage}/>
+              <Route path='/signup' component={SignUpPage}/>
+              <Route component={NewPlayList}/>
+          </Switch>
+      );
+
+      if(this.props.isLogIn){
+          routes=(
+              <Switch>
+              <Route path='/' exact render={(props)=>(<Layout {...props} content='Search'/>)}/>
+              <Route path='/login' render={(props)=>(<Layout {...props} content='Search'/>)}/>
+              <Route path='/signup' render={(props)=>(<Layout {...props} content='Search'/>)}/>
+              <Route path='/test' component={Test}/>
+              <Route path='/search' render={(props)=>(<Layout {...props} content='Search'/>)}/>
+              <Route path='/artists' exact render={(props)=>(<Layout {...props} content='Artists'/>)}/>
+              <Route path='/albums'  exact render={(props)=>(<Layout {...props} content='Albums'/>)}/>
+              <Route path='/browse'  exact render={(props)=>(<Layout {...props} content='Browse'/>)}/>
+              <Route path='/albums/:id'  render={(props)=>(<Layout {...props} content='AlbumId'/>)}/>
+              <Route path='/favoriteSongs' render={(props)=>(<Layout {...props} content='Songs'/>)}/>
+              <Route component={NewPlayList}/>
+
+
+          </Switch>);
+      }
 //
     return (
+      <div>
+          {routes}
+      </div>
 
-      <Switch>
-          <Route path='/' exact component={FistPage}/>
-          <Route path='/login' component={LoginPage}/>
-          <Route path='/signup' component={SignUpPage}/>
-          <Route path='/test' component={Test}/>
-          <Route path='/search' render={(props)=>(<Layout {...props} content='Search'/>)}/>
-          <Route path='/artists' exact render={(props)=>(<Layout {...props} content='Artists'/>)}/>
-          <Route path='/albums'  exact render={(props)=>(<Layout {...props} content='Albums'/>)}/>
-          <Route path='/albums/:id'  render={(props)=>(<Layout {...props} content='AlbumId'/>)}/>
-          <Route path='/favoriteSongs' render={(props)=>(<Layout {...props} content='Songs'/>)}/>
-          <Route component={FistPage}/>
-
-
-      </Switch>
     );
   }
 }
+const mapStateToProps=state=>{
+    return{
+        isLogIn: state.auth.token !==null
+    }
+};
 
-export default App;
+export default withRouter( connect( mapStateToProps )( App ) );

@@ -7,6 +7,9 @@
 .LoginForm{
     margin-bottom: 140px;
 }
+.LoginForm h1{
+    color:red;
+}
 .LoginFormField{
     display: block;
     margin-bottom: 12px;

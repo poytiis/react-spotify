@@ -1,7 +1,10 @@
 export {
     logIn,
     signUp,
-    createUser
+    createUser,
+    logOut,
+    passwordsDontMatch,
+    clearError
 
 } from './auth'
 

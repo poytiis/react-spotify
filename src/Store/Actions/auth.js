@@ -17,7 +17,7 @@ export const authSuccess= authData=>{
 
 export const authFail= error=>{
     return{
-        type:actionTypes.AUTH_FAIL,
+        type:actionTypes.AUTH_FAILED,
         error:error
     };
 };
@@ -36,17 +36,18 @@ export const signUp=(email, password, name)=>{
                 console.log(res);
 
                 dispatch(createUser(res.data, name))
-            });
+            }).catch(err=>dispatch(authFail(err.response.data.error.message)));
 
     };
 };
-
+//salasana testi spostille
+//tauaksakh122
 export const logIn=(email, password)=>{
     return dispatch =>{
         dispatch(authStart());
         const authData={
-            email:'testi2@gmail.com',
-            password:'tauaksakh122',
+            email: email,
+            password:password,
             returnSecureToken:true
         };
         axios.post("https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=AIzaSyA8LWRgDoWy1CWxI7jT2-DD0WGkOyWwmXE",authData)
@@ -54,7 +55,9 @@ export const logIn=(email, password)=>{
                 console.log(res);
                 dispatch(authSuccess(res.data));
 
-            });
+            }).catch(err=> dispatch(authFail(err.response.data.error.message))
+
+        );
 
 
     }
@@ -68,11 +71,31 @@ export const createUser= (data, name)=>{
 
         const d={
 
-            name:name
+            name:name,
+            email:data.email
         };
-        axios.put(url, d).then(res=>{dispatch(authSuccess(data))});
+        axios.put(url, d).then(res=>{
+            console.log(res);
+            dispatch(authSuccess(data))});
 
     };
 
 
+};
+export const logOut=()=>{
+
+    return{
+        type:actionTypes.LOG_OUT
+    }
+
+};
+export const passwordsDontMatch=()=>{
+    return{
+        type:actionTypes.PASSWORDS_DONT_MATCH
+    }
+};
+export const clearError=()=>{
+    return{
+        type:actionTypes.CLEAR_ERROR
+    }
 };

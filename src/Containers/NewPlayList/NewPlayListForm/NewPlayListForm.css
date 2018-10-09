@@ -1,0 +1,103 @@
+#NewPlayListForm{
+    width: 95%;
+    height: 200px;
+    margin: 10px auto;
+}
+#NewPlayListFormNameField:focus,
+#NewPlayListFormNameField:active,
+#NewPlayListFormNameField{
+    width: 85%;
+    height: 26px;
+    background-color: #fff;
+    display: inline-block;
+    border: none;
+
+}
+
+#NewPlayListForm #whiteBox{
+    background-color: white;
+    width: 12%;
+    height: 28px;
+    display: flex;
+    align-items: center;
+
+}
+#NewPlayListForm .flexDiv{
+    display: flex;
+    align-items: center;
+}
+#NewPlayListForm #blueBox{
+    background-color: #2095FC;
+    border-radius: 10px;
+    height: 70%;
+    width: 90%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+}
+#NewPlayListForm .chars{
+    font-size: 14px;
+    margin: auto;
+    padding: 0 11px;
+}
+.greyText{
+    color:lightgray;
+}
+#NewPlayListFormLabel{
+    margin-bottom: 4px;
+}
+.flexColumn{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+#NewPlayListForm #leftHalf{
+    width: 30%;
+    height: 220px;
+    display: inline-block;
+}
+#NewPlayListForm #leftHalf img{
+    height: 100px;
+    width: 100px;
+    margin-top: 20px;
+
+}
+#NewPlayListForm #rightHalf{
+    display: inline-block;
+    width: 70%;
+    height: 220px;
+}
+.flexEnded{
+    display: flex;
+    justify-content: space-between;
+    width: 95%;
+    text-align: center;
+    margin: 10px 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding-right: 3px;
+}
+#otherBlueBox{
+    border-radius: 10px;
+    background-color: #2095FC;
+}
+#rightHalf p {
+    margin: 0;
+}
+#rightHalf input{
+    width: 91%;
+    height: 170px;
+}
+#bottomHalf{
+   width: 100%;
+    padding-top: 35px;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+#PLayListTextArea{
+    background-color: white;
+    width: 94%;
+    height: 160px;
+}

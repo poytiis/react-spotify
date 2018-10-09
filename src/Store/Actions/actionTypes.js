@@ -1,6 +1,6 @@
 export const AUTH_START='AUTH_START';
 export const AUTH_SUCCESS='AUTH_SUCCESS';
-export const AUTH_FAIL='AUTH_FAIL';
+export const AUTH_FAILED= 'AUTH_FAILED';
 export const SWITCHSHUFFLE='SWITCHSHUFFLE';
 export const REMOVE_FAV='REMOVE_FAV';
 export const PLAY_NEXT='PLAY_NEXT';
@@ -11,3 +11,6 @@ export const PLAY_NEW='PLAY_NEW';
 export const SONG_ENDED='SONG_ENDED';
 export const PLAY_FROM_QUEUE='PLAY_FROM_QUEUE';
 export const PLAY_FROM_PLAYLIST='PLAY_FROM_PLAYLIST';
+export const LOG_OUT='LOG_OUT';
+export const PASSWORDS_DONT_MATCH='PASSWORDS_DONT_MATCH';
+export const CLEAR_ERROR='CLEAR_ERROR';

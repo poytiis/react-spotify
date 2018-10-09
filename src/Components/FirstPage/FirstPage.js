@@ -16,7 +16,7 @@ const firstPage=(props)=>{
               <LogoFlex/>
 
                <div id="main_login_header_c"><h1 id="main_login_header">Play any song, anytime, free.</h1> </div>
-               <Button color='white' bg='rgb(0,205,110)' click={()=>props.history.push('/test')}> sign up free</Button>
+               <Button color='white' bg='rgb(0,205,110)' click={()=>props.history.push('/signup')}> sign up free</Button>
 
                <TextDecoration width='304px'>ALREADY HAVE AN ACCOUNT?</TextDecoration>
                <div> <Button color='black' bg='white' click={()=>props.history.push('/login')}> log in</Button></div>

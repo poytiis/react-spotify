@@ -34,7 +34,7 @@ const gridItem=(props)=>{
     return (
         <div id='gridItem' style={{padding:padding, textAlign:textAlign}}>
             <img src={props.source} alt='cover' style={style}/>
-            <Link to={url}> {props.artistName}</Link>
+            <Link to={url} className='gridLink'> {props.artistName}</Link>
             <p>{props.songs}  {props.songs===1?'song':'songs'}</p>
         </div>
     );
