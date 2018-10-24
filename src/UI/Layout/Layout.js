@@ -10,6 +10,7 @@ import PlayBar from '../../Containers/PlayBar/PlayBar';
 import FavoriteSongs from '../../Containers/FavoriteSongs/FavoriteSongs';
 import  SingleAlbum from '../../Containers/Albums/SingleAlbum/SingleAlbum';
 import Browse from '../../Containers/Browse/Browse';
+import NewPlayList from '../../Containers/NewPlayList/NewPlayList'
 
 class Layout extends Component {
 
@@ -21,6 +22,7 @@ class Layout extends Component {
         else if(this.props.content==='Songs') content=<FavoriteSongs/>;
         else if(this.props.content==='Browse') content=<Browse/>;
         else if(this.props.content==='AlbumId') content=<SingleAlbum {...this.props}/>;
+        else if(this.props.content==='NewPlayList') content=<NewPlayList/>;
 
        return(
          <React.Fragment>

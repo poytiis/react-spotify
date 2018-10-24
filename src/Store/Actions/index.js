@@ -4,7 +4,8 @@ export {
     createUser,
     logOut,
     passwordsDontMatch,
-    clearError
+    clearError,
+    autoLogIn
 
 } from './auth'
 
@@ -13,5 +14,12 @@ export {
     playNext,
     playPre,
     playNew,
-    songEnded
+    songEnded,
+    addNewPlayList
 }from './player'
+
+
+export {
+    getUsersPlayLists,
+    createPlayList
+} from './music'

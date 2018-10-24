@@ -11,6 +11,9 @@ const authReducer=(state=initialState, action)=>{
 
     switch (action.type){
         case actions.AUTH_SUCCESS:
+
+            localStorage.setItem('token', action.payload.idToken);
+            localStorage.setItem('userId', action.payload.localId);
             return{
                 token: action.payload.idToken,
                 userId:action.payload.localId,
@@ -18,6 +21,7 @@ const authReducer=(state=initialState, action)=>{
             };
 
         case actions.LOG_OUT:
+
             return{
                 token:null,
                 userId:null,

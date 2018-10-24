@@ -53,9 +53,17 @@
     margin:0 8px;
 
 }
+#SideDrawer h5:hover{
+    cursor:pointer;
+}
 #SideDrawer hr{
     color: #B0ADAD;
     margin-top:  auto;
     justify-content: flex-end;
     width: 90%;
+}
+#testC{
+    position: relative;
+    width: 100%;
+    height: 100%;
 }

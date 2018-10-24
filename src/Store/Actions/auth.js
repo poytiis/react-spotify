@@ -84,6 +84,8 @@ export const createUser= (data, name)=>{
 };
 export const logOut=()=>{
 
+    localStorage.removeItem('token');
+    localStorage.removeItem('userId');
     return{
         type:actionTypes.LOG_OUT
     }
@@ -97,5 +99,25 @@ export const passwordsDontMatch=()=>{
 export const clearError=()=>{
     return{
         type:actionTypes.CLEAR_ERROR
+    }
+};
+
+export const autoLogIn=()=>{
+    return dispatch=>{
+        const token = localStorage.getItem('token');
+        const userId = localStorage.getItem('userId');
+        if (!token || token==='undefined' || token===null) {
+            dispatch(logOut());
+        }
+
+        else{
+            console.log(token);
+            const payload={
+                token:token,
+                userId:userId
+            };
+            dispatch(authSuccess(payload))
+        }
+
     }
 };

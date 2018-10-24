@@ -10,8 +10,14 @@ import NewPlayList from './Containers/NewPlayList/NewPlayList'
 
 import { connect } from 'react-redux';
 import {Route, Switch,withRouter} from 'react-router-dom';
+import * as actions from './Store/Actions/index'
 
 class App extends Component {
+
+  componentDidMount(){
+      this.props.autoLog();
+  }
+
   render() {
       let routes=(
           <Switch>
@@ -28,6 +34,7 @@ class App extends Component {
               <Route path='/' exact render={(props)=>(<Layout {...props} content='Search'/>)}/>
               <Route path='/login' render={(props)=>(<Layout {...props} content='Search'/>)}/>
               <Route path='/signup' render={(props)=>(<Layout {...props} content='Search'/>)}/>
+              <Route path='/newplaylist' render={(props)=>(<Layout {...props} content='NewPlayList'/>)}/>
               <Route path='/test' component={Test}/>
               <Route path='/search' render={(props)=>(<Layout {...props} content='Search'/>)}/>
               <Route path='/artists' exact render={(props)=>(<Layout {...props} content='Artists'/>)}/>
@@ -54,5 +61,10 @@ const mapStateToProps=state=>{
         isLogIn: state.auth.token !==null
     }
 };
+const mapDispatchToprops = dispatch=>{
+    return {
+        autoLog:()=> dispatch(actions.autoLogIn())
+    }
+};
 
-export default withRouter( connect( mapStateToProps )( App ) );
+export default withRouter( connect( mapStateToProps , mapDispatchToprops)( App ) );

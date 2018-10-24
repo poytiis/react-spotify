@@ -6,7 +6,7 @@ import axios from 'axios';
 export const removeFav=(id, userId)=>{
     return dispatch =>{
         let url='https://react-spotify-b66da.firebaseio.com/users/';
-        url=url.concat(userId,'/songs',id,'.json');
+        url=url.concat(userId,'/songs/',id,'.json');
         axios.delete(url);
 
     }
@@ -53,4 +53,16 @@ export const songEnded= (id, way, randomIndex)=>{
         });
     }
 
+};
+export const addNewPlayList=(id,name,description)=>{
+    console.log('jsduysiu');
+    return dispatch=>{
+            const url='https://react-spotify-b66da.firebaseio.com/users/'.concat(id,'/playlists/',name,'.json',);
+            const data={
+                description:description
+            };
+            axios.put(url,data).then(res=>{
+                dispatch({type:actionTypes.ADD_NEW_PLAYLIST})
+            }).catch(err=>console.log(err))
+    }
 };

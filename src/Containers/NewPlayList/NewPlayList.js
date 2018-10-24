@@ -10,7 +10,7 @@ class NewPlayList extends Component{
             <div id='NewPlayList'>
                 <span className='spanTop'>Create playlist</span>
                 <hr/>
-              <NewPLayListForm/>
+              <NewPLayListForm close={this.props.close}/>
 
             </div>
         );

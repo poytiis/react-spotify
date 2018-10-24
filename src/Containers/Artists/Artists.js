@@ -28,7 +28,7 @@ class Artists extends  Component{
 
     render(){
         let content=<Spinner/>;
-        if( this.state.loaded && !this.state.loading){
+        if( this.state.loaded && !this.state.loading && this.state.artist.length !==0){
 
             content=this.state.artist.map(artist=><GridItem type='artist' key={artist.name} source={square} artistName={artist.name} songs={artist.songs}/>);
         }

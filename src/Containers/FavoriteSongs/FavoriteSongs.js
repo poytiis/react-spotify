@@ -28,6 +28,11 @@ class FavoriteSongs extends Component{
         let url='https://react-spotify-b66da.firebaseio.com/users/';
         url=url.concat(this.props.userId,'/songs.json');
         axios.get(url).then(res=>{
+            console.log(res);
+            if(res.data===null){
+                this.setState({loaded:true});
+                return;
+            }
             this.setState({totalSongs:Object.values(res.data).length});
             var index=1;
             Object.values(res.data).map(obj=>{
@@ -53,10 +58,14 @@ class FavoriteSongs extends Component{
     render(){
         console.log(this.state.songs);
         let content=<Spinner/>;
-        if(this.state.loaded){
+        if(this.state.loaded && this.state.songs.length !==0){
             content=this.state.songs.map((res,index)=> <ListItem tittle={res.tittle} key={res.id}
                                                                  artist={res.artist} id={res.id}
                                                                  playControl={this.playSong.bind(this,res.id,index)}/>)
+        }
+
+        else if(this.state.loaded && this.state.songs.length ===0){
+            content=<p> You don't have favorite songs, let's add a few</p>
         }
         return(
 

@@ -1,7 +1,9 @@
 import React , {Component} from 'react';
 import './NewPlayListForm.css';
-import musik_note from '../../../Assets/Pictures/music_note.png'
-import Button from '../../../Components/Button/Button'
+import musik_note from '../../../Assets/Pictures/music_note.png';
+import Button from '../../../Components/Button/Button';
+import {connect} from 'react-redux';
+import * as actions from '../../../Store/Actions/index'
 
 class NewPlayListForm extends  Component{
 
@@ -15,6 +17,13 @@ class NewPlayListForm extends  Component{
     };
     handleDescriptionChange=(event)=>{
         this.setState({textArea:event.target.value})
+    };
+    handleSubmit=(event)=>{
+
+        event.preventDefault();
+        this.props.createNewList( this.state.nameField, this.state.textArea,this.props.userId);
+
+
     };
 
     render(){
@@ -50,11 +59,13 @@ class NewPlayListForm extends  Component{
             height:'30px',
             minWidth:'0px',
             width:'95px',
-            padding:'0'
+            padding:'0',
+            borderRadius:'20px',
+            letterSpacing:'1px'
 
         };
         return(
-            <form id='NewPlayListForm'>
+            <form id='NewPlayListForm' onSubmit={this.handleSubmit}>
                 <label className='greyText' id='NewPlayListFormLabel'>Name</label>
                 <div className='flexDiv'>
                     <input type='text' id='NewPlayListFormNameField' placeholder='Playlist name' value={this.state.nameField} onChange={this.handleNameChange}/>
@@ -82,8 +93,9 @@ class NewPlayListForm extends  Component{
                 </div>
                 <div id='bottomHalf'>
                     <div id='buttonContainer'>
-                        <Button stylee={buttonStyleBottomBlack}>cancel</Button>
-                        <Button stylee={buttonStyleBottomGreen}>create</Button>
+                        <Button stylee={buttonStyleBottomBlack} click={this.props.close}>cancel</Button>
+                        <input type='submit' style={buttonStyleBottomGreen} value='CREATE' id='NewPlayListSubmit'/>
+
                     </div>
 
 
@@ -94,4 +106,15 @@ class NewPlayListForm extends  Component{
         );
     }
 }
-export  default NewPlayListForm
+const mapStateToProps=state=>{
+    return{
+        userId:state.auth.userId
+    }
+};
+const mapDispatchToProps=dispatch=>{
+    return{
+        addNewList:(id,name,description)=>dispatch(actions.addNewPlayList(id,name,description)),
+        createNewList:(name,description, id)=>dispatch(actions.createPlayList(name,description,id))
+    }
+};
+export  default connect(mapStateToProps,mapDispatchToProps)( NewPlayListForm);

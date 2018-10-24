@@ -11,6 +11,7 @@
     background-color: #fff;
     display: inline-block;
     border: none;
+    outline: none;
 
 }
 
@@ -72,7 +73,7 @@
     justify-content: space-between;
     width: 95%;
     text-align: center;
-    margin: 10px 0;
+    margin: 16px 0 4px 0;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -81,6 +82,7 @@
 #otherBlueBox{
     border-radius: 10px;
     background-color: #2095FC;
+    padding-left: 5px;
 }
 #rightHalf p {
     margin: 0;
@@ -96,8 +98,13 @@
     flex-flow: column;
     align-items: center;
 }
+#PLayListTextArea:focus,
 #PLayListTextArea{
     background-color: white;
     width: 94%;
     height: 160px;
+    outline: none;
+}
+#NewPlayListSubmit:hover{
+   cursor: pointer;
 }
