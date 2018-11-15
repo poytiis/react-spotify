@@ -24,6 +24,30 @@ class FavoriteSongs extends Component{
     };
 
     componentDidMount(){
+
+
+        if(this.props.favSongs.length===0){
+            this.setState({loaded:true});
+            return;
+        }
+        this.props.favSongs.map(song=>{
+            let songUrl='https://react-spotify-b66da.firebaseio.com/songs/'.concat(song.songId,'.json');
+            axios.get(songUrl).then(res=>{
+                if(res.data!==null) {
+                    const newSongs= this.state.songs.concat(res.data);
+                    const newSongIds=this.state.songIds.concat(res.data.id);
+                    this.setState({songs:newSongs,songIds:newSongIds});
+                    if(newSongs.length===this.props.favSongs.length) this.setState({loaded:true});
+                }
+            })
+        });
+
+
+
+
+    }
+
+    test=()=>{
         if(this.state.loaded) return;
         let url='https://react-spotify-b66da.firebaseio.com/users/';
         url=url.concat(this.props.userId,'/songs.json');
@@ -78,7 +102,8 @@ class FavoriteSongs extends Component{
 }
 const mapSateToProps= state=>{
     return{
-        userId:state.auth.userId
+        userId:state.auth.userId,
+        favSongs: state.music.favoriteSongs
     };
 };
 const mapDispatchToProps= dispatch=>{

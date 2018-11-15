@@ -42,3 +42,29 @@ export const createPlayList =(name, description, userId)=>{
        })
     }
 };
+
+export const addNewFav=(id, userId)=>{
+
+    return dispatch=>{
+        const url= 'https://react-spotify-b66da.firebaseio.com/users/'.concat(userId,'/songs/.json');
+        let data={songId:id};
+        axios.post(url,data).then(res=>{
+
+           dispatch({type:actionTypes.ADD_NEW_FAV,data:data})
+        })
+    }
+};
+
+export const getUsersFavors =(userId)=>{
+    return dispatch =>{
+
+        let url='https://react-spotify-b66da.firebaseio.com/users/'.concat(userId,'/songs/.json');
+
+        axios.get(url).then(res=>{
+
+            if (res.data===null) return;
+            console.log(res);
+            dispatch({type:actionTypes.GET_FAVORITES,data:Object.values(res.data)})
+        })
+    }
+};

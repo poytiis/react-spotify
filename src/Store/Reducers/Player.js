@@ -6,7 +6,7 @@ const initialState={
     artist:'Apulanta',
     tittle:'Jumala',
     pic:'https://firebasestorage.googleapis.com/v0/b/react-spotify-b66da.appspot.com/o/images%2Fsquare3.jpg?alt=media&token=75481138-4c06-4e04-977f-3c9c5732980c',
-    queue:[1,3,4,0],
+    queue:[],
     playedSongs:[],
     playList:[2,5,1],
     backIndex:0,
@@ -72,7 +72,7 @@ const playerReducer=(state=initialState, action)=>{
             const queupop= state.queue.filter((val,index)=>{
                 return index!==0;
             });
-            const backIn= state.backIndex===0?state.backIndex:state.backIndex-1;
+            const backIn= state.backIndex===0 ? state.backIndex : state.backIndex-1;
             return {...action.data, playedSongs:state.playedSongs.concat(state.id), queue:queupop, id:action.id, backIndex:backIn};
 
         case actions.ADD_QUEUE:

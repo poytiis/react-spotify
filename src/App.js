@@ -24,7 +24,7 @@ class App extends Component {
               <Route path='/' exact component={FistPage}/>
               <Route path='/login' component={LoginPage}/>
               <Route path='/signup' component={SignUpPage}/>
-              <Route component={NewPlayList}/>
+              <Route component={FistPage}/>
           </Switch>
       );
 
@@ -42,7 +42,7 @@ class App extends Component {
               <Route path='/browse'  exact render={(props)=>(<Layout {...props} content='Browse'/>)}/>
               <Route path='/albums/:id'  render={(props)=>(<Layout {...props} content='AlbumId'/>)}/>
               <Route path='/favoriteSongs' render={(props)=>(<Layout {...props} content='Songs'/>)}/>
-              <Route component={NewPlayList}/>
+              <Route component={FistPage}/>
 
 
           </Switch>);

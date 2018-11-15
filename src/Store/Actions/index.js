@@ -21,5 +21,7 @@ export {
 
 export {
     getUsersPlayLists,
-    createPlayList
+    createPlayList,
+    addNewFav,
+    getUsersFavors
 } from './music'

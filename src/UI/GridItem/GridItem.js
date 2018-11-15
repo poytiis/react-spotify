@@ -3,7 +3,7 @@ import './GridItem.css'
 import {Link} from 'react-router-dom'
 
 const gridItem=(props)=>{
-    let borderRadius=100;
+    let borderRadius=200;
     let textAlign='center';
     let padding=0;
     let imageWidth='80%';

@@ -22,6 +22,19 @@ const musicReducer=(state=initialState, action)=>{
                 playLists: action.data
             };
 
+        case actions.ADD_NEW_FAV:
+            const newFavs=state.favoriteSongs.concat(action.data);
+            return{
+                playLists:state.playLists,
+                favoriteSongs:newFavs
+            };
+
+        case actions.GET_FAVORITES:
+            return{
+                playLists:state.playLists,
+                favoriteSongs:action.data
+            };
+
         default :
             return state
     }

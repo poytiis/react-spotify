@@ -19,6 +19,12 @@
     padding-top: 10px;
     color: #B0ADAD;
 }
+.NavLink_notFinish{
+    text-decoration: none;
+    padding-left: 30px;
+    padding-top: 10px;
+    color:lightslategray;
+}
 .NavLink:hover{
     color:#E4E4E4;
 }
@@ -34,7 +40,7 @@
     cursor: default;
 }
 
-#SideDrawer div{
+#SideDrawer #newPlayListC{
     padding:0 0 0 30px;
     display: flex;
     align-items: center;
@@ -46,14 +52,15 @@
     height: 28px;
     width: 28px;
 }
-#SideDrawer h5{
+#SideDrawer .newP{
 
     color: #B0ADAD;
     font-size: 13px;
     margin:0 8px;
+    text-decoration: none;
 
 }
-#SideDrawer h5:hover{
+#SideDrawer .newP:hover{
     cursor:pointer;
 }
 #SideDrawer hr{
@@ -66,4 +73,9 @@
     position: relative;
     width: 100%;
     height: 100%;
+}
+
+#SideDrawer .userPlayList{
+    font-size: 15px;
+    margin: 0;
 }

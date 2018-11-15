@@ -1,14 +1,16 @@
 import  React, {Component} from 'react';
 import './ListItem.css'
-import play from '../../Assets/Pictures/icons/play.png';
+import play from '../../Assets/Pictures/icons/play_black.png';
 import heart from '../../Assets/Pictures/icons/heart.png';
+import heart_black from '../../Assets/Pictures/icons/heart_black.png';
 import {connect} from 'react-redux';
 import axios from 'axios';
 import * as actions from '../../Store/Actions/index';
 
 class ListItem extends Component{
     state={
-        isFavour:true
+        isFavour:true,
+        hover:false
     };
 
     componentDidMount(){
@@ -24,11 +26,21 @@ class ListItem extends Component{
             axios.delete(url);
         }
     };
+    handleHover=()=>{
+        this.setState({hover:true});
+    };
+    handleMouseOut=()=>{
+        this.setState({hover:false});
+    };
+
+    addFavorite=()=>{
+        this.props.addFav(this.props.id, this.props.userId)
+    };
     render(){
         return(
-            <li id='ListItem'>
+            <li id='ListItem' onMouseOver={this.handleHover} onMouseOut={this.handleMouseOut}>
                 <img src={play} className='ListItemPlay' alt='play button' onClick={this.props.playControl}/>
-                <img src={heart} alt='heart' className='ListItemHeart' onClick={this.switchFavor}/>
+                <img src={this.state.hover?heart_black:heart} alt='heart' className='ListItemHeart' onClick={this.addFavorite} />
                 <span  className='ListItemTitle'> {this.props.tittle}</span>
                 <span className='ListItemArtist'>{this.props.artist}</span>
                 <span className='ListItemAlbum'> album</span>
@@ -41,7 +53,8 @@ const mapDispatchToProps= dispatch=>{
 
     return{
 
-        removeFav: (id,userId)=> dispatch(actions.removeFav(id,userId))
+        removeFav: (id,userId)=> dispatch(actions.removeFav(id,userId)),
+        addFav:(id, userId)=>dispatch(actions.addNewFav(id,userId))
     };
 
 };

@@ -66,7 +66,7 @@ class PlayBar extends Component{
         if(this.state.duration !==0){
 
             const time= this.formatTime(this.audioRef.current.currentTime);
-            const prosent= (time/this.state.duration)*100;
+            const prosent= (this.audioRef.current.currentTime/this.audioRef.current.duration)*100;
 
             this.setState({timePlayed:time, prosentPlayed:prosent})
         }
@@ -90,7 +90,8 @@ class PlayBar extends Component{
         const length= this.playEndRef.current.offsetLeft-this.playStartRef.current.offsetLeft-10;
         const percentage=(e.clientX- this.playStartRef.current.offsetLeft)/length;
 
-        this.audioRef.current.currentTime=percentage*this.state.duration;
+        console.log(percentage);
+        this.audioRef.current.currentTime=percentage*this.audioRef.current.duration;
     };
 
     playNext= (caller=null)=>{
@@ -195,7 +196,7 @@ class PlayBar extends Component{
 
                 </div>
 
-                <audio ref={this.audioRef} src={this.props.songSrc} onCanPlay={this.setDuration}
+                <audio ref={this.audioRef} src={this.props.songSrc} onCanPlay={this.setDuration} autoPlay={this.state.playing}
                        onTimeUpdate={this.timeUpdate} onEnded={this.playNext.bind(this,'ended')}>
 
                 </audio>
