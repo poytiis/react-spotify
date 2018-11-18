@@ -43,8 +43,8 @@ class ListItem extends Component{
                 <img src={this.state.hover?heart_black:heart} alt='heart' className='ListItemHeart' onClick={this.addFavorite} />
                 <span  className='ListItemTitle'> {this.props.tittle}</span>
                 <span className='ListItemArtist'>{this.props.artist}</span>
-                <span className='ListItemAlbum'> album</span>
-                <span className='ListItemDate'>date</span>
+                <span className='ListItemAlbum'> </span>
+                <span className='ListItemDate'>{this.props.album}</span>
             </li>
         );
     }

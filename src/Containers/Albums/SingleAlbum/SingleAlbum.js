@@ -25,7 +25,7 @@ class SingleAlbum extends Component{
 
     render(){
 
-        const content= this.state.songs.map(song=><ListItem tittle={song.tittle} artist={song.artist} key={song.id} id={song.id}/>);
+        const content= this.state.songs.map(song=><ListItem tittle={song.tittle} artist={song.artist} key={song.id} id={song.id} album={song.album}/>);
         return(
             <React.Fragment>
                 <ul>

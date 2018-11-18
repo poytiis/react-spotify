@@ -36,7 +36,7 @@ class SideDrawer extends Component{
                     <NavLink to='/albums' className='NavLink'>Albums</NavLink>
                     <NavLink to='/artists' className='NavLink'>Artists</NavLink>
                     <NavLink to='/test' className='NavLink_notFinish'>Stations</NavLink>
-                    <NavLink to='/test' className='NavLink_notFinish'>Local files</NavLink>
+                    <NavLink to='/localfiles' className='NavLink'>Local files</NavLink>
                     <NavLink to='/newplaylist' className='NavLink_notFinish'>Podcasts</NavLink>
                     <p> PLAYLISTS</p>
                     <div id='playListC'>

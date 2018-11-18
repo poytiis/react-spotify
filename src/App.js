@@ -42,6 +42,7 @@ class App extends Component {
               <Route path='/browse'  exact render={(props)=>(<Layout {...props} content='Browse'/>)}/>
               <Route path='/albums/:id'  render={(props)=>(<Layout {...props} content='AlbumId'/>)}/>
               <Route path='/favoriteSongs' render={(props)=>(<Layout {...props} content='Songs'/>)}/>
+              <Route path='/localfiles' render={(props)=>(<Layout {...props} content='LocalFiles'/>)}/>
               <Route component={FistPage}/>
 
 

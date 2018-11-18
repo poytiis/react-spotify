@@ -83,7 +83,7 @@ class FavoriteSongs extends Component{
         console.log(this.state.songs);
         let content=<Spinner/>;
         if(this.state.loaded && this.state.songs.length !==0){
-            content=this.state.songs.map((res,index)=> <ListItem tittle={res.tittle} key={res.id}
+            content=this.state.songs.map((res,index)=> <ListItem tittle={res.tittle} key={res.id} album={res.album}
                                                                  artist={res.artist} id={res.id}
                                                                  playControl={this.playSong.bind(this,res.id,index)}/>)
         }
